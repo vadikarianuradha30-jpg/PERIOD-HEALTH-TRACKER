@@ -1,0 +1,45 @@
+# period health tracker
+import datatime
+print ("period health tracker\n")
+# input date
+year = int(input("enter last period year (yyyy): "))
+month = int(input("enter last period date (1-12): "))
+date = int(input("enter last period date (1-31): "))
+
+cycle = int(input("enter last cycle length (e.g. 28): "))
+
+# create data object 
+last_date = datetime.date(year,month,date)
+
+# predict next period 
+last_period = last_date + datetime.timedelta(days=cycle)
+
+# calculate today's date
+today = datetime.date.today()
+
+# days passed since last period 
+days_passed = (today - last_date).days
+
+# Determine phase
+if days_passed < 5:
+    phase = "Menstrual phase"
+elif days_passed < 14:
+    phase = "Follicular phase"
+elif days_passed < 16:
+    phase = "Ovulation phase"
+
+# Fertile (approx)
+fertile_start = last_date + datetime.timedelta(days=12)
+fertile_end = last_date + datetime.timedelta(days=16)
+
+# Output
+print("\n next period date:" , next_period)
+print("current phase:", phase)
+print("fertile window:", fertile_start, "to", fertile_end)
+
+if today >= fertile_start and today <=fertile end:
+   print("you are currently in fertile days ")
+else :
+    print("you are not in fertile days ")
+
+print("\nstay healthy")
